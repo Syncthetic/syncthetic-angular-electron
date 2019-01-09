@@ -1,6 +1,21 @@
 # Syncthetic Angular Electron
 > Quick boostrapping for [Angular](https://github.com/angular/angular) and [Electron](https://github.com/electron/electron). Automatic updates are supplied with [ElectronAutoUpdate](https://github.com/Syncthetic/ElectronAutoUpdate) if you publish and point the `UpdateService` to an [ElectronAutoUpdateAPI](https://github.com/Syncthetic/ElectronAutoUpdateAPI)
 
+# Prerequisites
+- Configure an [ElectronAutoUpdateAPI](https://github.com/Syncthetic/ElectronAutoUpdateAPI)
+- However you choose, add your application to the API, the recommended way is to use [ElectronAutoUpdateClient](https://github.com/Syncthetic/ElectronAutoUpdateCLient)
+- Ensure that the application being inserted follows the `Application Interface`
+ ```javascript
+ interface Application {
+  name: string
+  version: string
+  download: string
+  additionalInfo?: {}
+}
+```
+#### [ElectronAutoUpdateClient](https://github.com/Syncthetic/ElectronAutoUpdateCLient)
+> If you use MongoDB Stitch for your application, you can simply login with this application to manage all of your applications. i.e, change version information which causes applications using ElectronAutoUpdate to fire events if it's outdated.
+
 # Getting started
 Clone the repository and install dependancies
 
@@ -34,7 +49,3 @@ On line `22` and `23`, set the `apiDomain` and `apiBase`
  
  # Optional Configuration
  A top level alert notification is rendered for application updates. You can configure the component and view for the alerts in the `src/app/components/alerts` folder
- 
- # Useful Tools
- #### [ElectronAutoUpdateClient](https://github.com/Syncthetic/ElectronAutoUpdateCLient)
-> If you use MongoDB Stitch for your application, you can simply login with this application to manage all of your applications. i.e, change version information which causes applications using ElectronAutoUpdate to fire events if it's outdated.

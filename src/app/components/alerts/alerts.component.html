@@ -1,0 +1,15 @@
+<div *ngIf="updater.isAppVersionOld" class="alert alert-app-level alert-warning" style="margin-bottom:24px" role="alert">
+  <div class="alert-items">
+    <div class="alert-item static">
+      <div class="alert-icon-wrapper">
+        <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+      </div>
+      <div class="alert-text">
+        There is a new version ({{updater.latestAppVersion}}) available for download
+      </div>
+      <div class="alert-text">
+        <button (click)="updater.requestDownload()" class="btn alert-action">Download the latest version</button>
+      </div>
+    </div>
+  </div>
+</div>

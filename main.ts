@@ -2,9 +2,28 @@ import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
+const download = require('electron-dl').download
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+
+let launchedFromUpdate = args.some(val => val.includes('--remove-app='))
+let removeApplication
+if ( launchedFromUpdate ) removeApplication = args.find(arg => { return arg.includes('--remove-app') }).split('=')[1]
+
+console.log('I should implement logic to remove the app:', removeApplication)
+
+const electron = require('electron')
+const ipcMain = electron.ipcMain
+
+ipcMain.on('download', (ev, args) => {
+  args.properties.onProgress = status => win.webContents.send("download progress", status);
+
+  download(BrowserWindow.getFocusedWindow(), args.url, args.properties)
+    .then(dl => win.webContents.send("download complete", dl.getSavePath()) )
+    .catch(console.error);
+})
+
 
 function createWindow() {
   const electronScreen = screen;

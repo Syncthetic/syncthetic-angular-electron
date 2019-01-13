@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 
+import { ProgressBarModule } from 'primeng/progressbar';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProgressBarModule
   ],
   providers: [ElectronService],
   bootstrap: [AppComponent]

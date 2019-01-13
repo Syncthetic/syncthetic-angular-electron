@@ -1,4 +1,4 @@
-<div *ngIf="updater.isAppVersionOld" class="alert alert-app-level alert-warning" style="margin-bottom:24px" role="alert">
+<div *ngIf="displayDownload && !downloadInProgress && !downloadComplete" class="alert alert-app-level alert-warning" style="margin-bottom:10px;width: 100%;" role="alert">
   <div class="alert-items">
     <div class="alert-item static">
       <div class="alert-icon-wrapper">
@@ -12,4 +12,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="updater.downloadInProgress && downloadProgress < 100" style="width:60%; margin-top: 5px; margin-bottom:5px; margin-left: auto; margin-right: auto;">
+  <p-progressBar [value]="downloadProgress"></p-progressBar>
 </div>
